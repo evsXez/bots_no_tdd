@@ -20,5 +20,6 @@ class Strings {
   static String anonym = "Mr. Anonym";
   static String ok = "OK";
   static String close = "Close";
+  static String end_of_list = "End of list.";
 
 }

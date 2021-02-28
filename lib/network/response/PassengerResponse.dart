@@ -15,8 +15,7 @@ class PassengerResponse {
     );
   }
 
-  static List<Passenger> fromList(String source) {
-    final List<dynamic> array = json.decode(source)['data'];
+  static List<Passenger> fromArray(List<dynamic> array) {
     return array.map(fromMap).toList();
   }
 
