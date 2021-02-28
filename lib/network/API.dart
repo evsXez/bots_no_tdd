@@ -14,6 +14,9 @@ class API {
   static Future<NetworkRequestResult> callAddUser<T>(String name, String comment, {dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
     _call(_addUser(name, comment), onSuccess: onSuccess, onError: onError, converter: converter);
 
+  static Future<NetworkRequestResult> callGetUsers<T>({dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
+    _call(_getUsers(), onSuccess: onSuccess, onError: onError, converter: converter);
+
   static Future<NetworkRequestResult> _call<T>(Future<NetworkRequestResult> method, {dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) {
     assert(onSuccess != null);
     assert(onError != null);
@@ -43,6 +46,9 @@ class API {
 
   static Future<NetworkRequestResult> _addUser(String name, String comment) async {
     return await _network.post("highfive", {"name": name, "comment": comment});
+  }
+  static Future<NetworkRequestResult> _getUsers() async {
+    return await _network.get("highfive");
   }
 
 

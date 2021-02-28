@@ -1,6 +1,5 @@
 # //TODO:
 
->- implement GET
 - demonstrate server-client communication
 - demonstrate complex UI graph
 - demonstrate navigation flow
@@ -23,6 +22,7 @@
 
 
 ## DONE:
+- <s>implement GET</s>
 - <s>implement POST</s>
 - <s>implement bottom navigation bar</s>
 - <s>create simple server and simple database</s>
