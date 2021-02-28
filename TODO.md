@@ -8,7 +8,6 @@
 - implement POST
 - implement PUT
 - implement DELETE
-- implement bottom navigation bar
 - graphs: data from server on every page
 - make graphs different (load, interaction)
 - every page should have a different way of showing server information (snack bar, bottom sheet, etc.)
@@ -27,5 +26,6 @@
 ## DONE:
 - <s>read document carefully</s>
 - <s>create simple server and simple database</s>
+- <s>implement bottom navigation bar</s>
 
 
