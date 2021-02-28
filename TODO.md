@@ -1,11 +1,11 @@
 # //TODO:
 
+>- implement POST
 - demonstrate server-client communication
 - demonstrate complex UI graph
 - demonstrate navigation flow
 - demonstrate state management
 - implement GET
-- implement POST
 - implement PUT
 - implement DELETE
 - graphs: data from server on every page

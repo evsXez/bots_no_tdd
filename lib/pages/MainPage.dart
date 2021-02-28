@@ -19,7 +19,7 @@ class _MainPageState extends State<MainPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: page,
+        body: SafeArea(child: page),
         bottomNavigationBar: bottomNavigation,
       ),
     );
