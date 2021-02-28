@@ -10,5 +10,8 @@ class Strings {
   
   static final hint_name = "Enter your name";
   static final hint_comment = "Add comment if you wish";
+  static final hint_press_long_for_menu = "Press long ;)";
+  static final hint_select_user = "Select user from the list first";
+
 
 }

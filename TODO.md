@@ -1,11 +1,10 @@
 # //TODO:
 
+>- implement DELETE
 - demonstrate server-client communication
 - demonstrate complex UI graph
 - demonstrate navigation flow
 - demonstrate state management
-- implement PUT
-- implement DELETE
 - graphs: data from server on every page
 - make graphs different (load, interaction)
 - every page should have a different way of showing server information (snack bar, bottom sheet, etc.)
@@ -22,6 +21,7 @@
 
 
 ## DONE:
+- <s>implement PUT</s>
 - <s>implement GET</s>
 - <s>implement POST</s>
 - <s>implement bottom navigation bar</s>

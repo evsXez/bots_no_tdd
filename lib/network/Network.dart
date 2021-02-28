@@ -82,6 +82,21 @@ class Network {
     }
   }
 
+  Future<NetworkRequestResult> put(String path, dynamic body) async {
+    final counter = requestCounter++;
+    debugPrint("$_tf>>> [$counter]: PUT \"${server+path}\" BODY: $body");
+
+    try {
+      final res = await client.put(
+          server + path,
+          body: body,
+        );
+      return NetworkRequestResult.fromResponse(res, counter: counter);
+    } catch (e) {
+      return NetworkRequestResult(error: NetworkRequestError(-1, "$e"), counter: counter);
+    }
+  }
+
   // void _saveCookie(http.Response res) {
   //   final key = res.headers.keys.firstWhere((it) => it.toLowerCase() == "set-cookie", orElse: ()=>null);
   //   if (key != null) {
