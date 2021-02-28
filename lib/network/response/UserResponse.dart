@@ -16,6 +16,8 @@ class UserResponse {
 
   static List<User> fromList(String source) {
     final List<dynamic> array = json.decode(source);
-    return array.map(fromMap).toList();
+    final res = array.map(fromMap).toList();
+    res.sort((u1, u2) => u2.updated.compareTo(u1.updated));
+    return res;
   }
 }
