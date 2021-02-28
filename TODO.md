@@ -1,7 +1,6 @@
 # //TODO:
 
-- demonstrate state management
-- make graphs different (load, interaction)
+>- create 1 graph that is built using a Stream
 - at least 2 unit tests
 - create simple document with screenshots or short video that demonstrates TDD approach
 
@@ -9,12 +8,13 @@
 ## Bonus:
 
 - demonstrate why did you go for your state management approach: (dis)advantages
-- create 1 graph that is built using a Stream
 - write 1 integration test
 
 
 
 ## DONE:
+- <s>make graphs different (load, interaction)</s>
+- <s>demonstrate state management</s>
 - <s>every page should have a different way of showing server information (snack bar, bottom sheet, etc.)</s>
 - <s>graphs: data from server on every page</s>
 - <s>demonstrate complex UI graph</s>
