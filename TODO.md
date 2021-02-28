@@ -1,6 +1,5 @@
 # //TODO:
 
->- create simple server and simple database
 - demonstrate server-client communication
 - demonstrate complex UI graph
 - demonstrate navigation flow
@@ -27,5 +26,6 @@
 
 ## DONE:
 - <s>read document carefully</s>
+- <s>create simple server and simple database</s>
 
 
