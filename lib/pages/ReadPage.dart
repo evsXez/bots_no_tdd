@@ -3,6 +3,7 @@ import 'package:bots_no_tdd/network/API.dart';
 import 'package:bots_no_tdd/network/Network.dart';
 import 'package:bots_no_tdd/network/response/UserResponse.dart';
 import 'package:bots_no_tdd/resources/Strings.dart';
+import 'package:bots_no_tdd/utils/UpdatedTime.dart';
 import 'package:flutter/material.dart';
 
 class ReadPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _ReadPageState extends State<ReadPage> {
         onTap: showHint,
         title: Text(user.name), 
         subtitle: Text(user.comment, style: TextStyle(color: Colors.grey), maxLines: 3,),
-        trailing: Text("${user.updated}"),
+        trailing: Text(UpdatedTime.name(DateTime.fromMillisecondsSinceEpoch(user.updated))),
       ),
     )
   );

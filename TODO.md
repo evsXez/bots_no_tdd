@@ -1,17 +1,17 @@
 # //TODO:
 
-- at least 2 unit tests
+>- write 1 integration test
 - create simple document with screenshots or short video that demonstrates TDD approach
 
 
 ## Bonus:
 
 - demonstrate why did you go for your state management approach: (dis)advantages
-- write 1 integration test
 
 
 
 ## DONE:
+- <s>at least 2 unit tests</s>
 - <s>create 1 graph that is built using a Stream</s>
 - <s>make graphs different (load, interaction)</s>
 - <s>demonstrate state management</s>
