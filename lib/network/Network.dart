@@ -9,8 +9,11 @@ import 'NetworkRequestResult.dart';
 
 class Network {
 
+
+  final String server;
+  Network(this.server);
   // String get server => "http://localhost:5001/vn-iif/us-central1/";
-  String get server => "http://10.0.2.2:5001/vn-iif/us-central1/";
+  // String get server => "http://10.0.2.2:5001/vn-iif/us-central1/";
 
   static int requestCounter = 0;
 

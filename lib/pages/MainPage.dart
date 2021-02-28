@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'CreatePage.dart';
 import 'ReadPage.dart';
+import 'StreamPage.dart';
 import 'UpdatePage.dart';
 
 
@@ -18,6 +19,7 @@ class _MainPageState extends State<MainPage> {
   static const int PAGE_CREATE = 0;
   static const int PAGE_READ = 1;
   static const int PAGE_UPDATE = 2;
+  static const int PAGE_STREAM = 3;
 
   int currentPageIdx = 0;
   User userToUpdate;
@@ -42,7 +44,6 @@ class _MainPageState extends State<MainPage> {
       BottomNavigationBarItem(icon: Icon(Icons.add), label: Strings.label_create),
       BottomNavigationBarItem(icon: Icon(Icons.list), label: Strings.label_read),
       BottomNavigationBarItem(icon: Icon(Icons.edit), label: Strings.label_update),
-      // BottomNavigationBarItem(icon: Icon(Icons.delete), label: Strings.label_delete),
       BottomNavigationBarItem(icon: Icon(Icons.arrow_circle_down), label: Strings.label_stream),
     ]
   );
@@ -54,6 +55,7 @@ class _MainPageState extends State<MainPage> {
       case PAGE_CREATE: return CreatePage();
       case PAGE_READ: return ReadPage(onUserUpdateRequest);
       case PAGE_UPDATE: return UpdatePage(user: userToUpdate, updated: resetUser);
+      case PAGE_STREAM: return StreamPage();
     }
     return Container(color: Colors.orange,);
   }
