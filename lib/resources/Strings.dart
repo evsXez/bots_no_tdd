@@ -16,5 +16,9 @@ class Strings {
   static final hint_add_something = "Add something";
 
   static String hello;
+  
+  static String anonym = "Mr. Anonym";
+  static String ok = "OK";
+  static String close = "Close";
 
 }

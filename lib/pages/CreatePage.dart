@@ -1,4 +1,5 @@
 import 'package:bots_no_tdd/network/API.dart';
+import 'package:bots_no_tdd/network/Network.dart';
 import 'package:bots_no_tdd/network/response/HelloResponse.dart';
 import 'package:bots_no_tdd/resources/Strings.dart';
 import 'package:bots_no_tdd/widgets/Space.dart';
@@ -23,7 +24,7 @@ class _CreatePageState extends State<CreatePage> {
     } else {
       API.callHello(
         onSuccess: (s) { setHello(s); },
-        onError: showError,
+        onError: (e) { Network.showError(context, e); },
         converter: HelloResponse.fromJson,
       );
     }
@@ -54,18 +55,20 @@ class _CreatePageState extends State<CreatePage> {
    
 
   void createPressed() {
-    API.callAddUser(nameController.text, commentController.text,
+    String name = nameController.text;
+    if (name.isEmpty) name = Strings.anonym;
+    API.callAddUser(name, commentController.text,
       onSuccess: showMessage,
-      onError: showError,
+      onError: (e) { Network.showError(context, e); },
     );
   }
 
   void showMessage(data) {
-    print("Message: $data");
+    showDialog(context: context, child: AlertDialog(
+      content: Text(data),
+      actions: [FlatButton(onPressed: () { Navigator.of(context).pop(); }, child: Text(Strings.close))],
+    ));
     clearFields();
-  }
-  void showError(error) {
-    print("Error: $error");
   }
   void clearFields() {
     setState(() {

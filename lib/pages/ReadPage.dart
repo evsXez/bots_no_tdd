@@ -1,5 +1,6 @@
 import 'package:bots_no_tdd/data/User.dart';
 import 'package:bots_no_tdd/network/API.dart';
+import 'package:bots_no_tdd/network/Network.dart';
 import 'package:bots_no_tdd/network/response/UserResponse.dart';
 import 'package:bots_no_tdd/resources/Strings.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,7 @@ class _ReadPageState extends State<ReadPage> {
 
     API.callGetUsers<List<User>>(
       onSuccess: (list) { setState(() { data = list; }); },
-      onError: showError,
+      onError: (e) { Network.showError(context, e); },
       converter: UserResponse.fromList,
     );
   }
@@ -52,9 +53,6 @@ class _ReadPageState extends State<ReadPage> {
     )
   );
 
-  void showError(error) {
-    print("Error: $error");
-  }
 
   void showHint() {
     Scaffold.of(context).showSnackBar(SnackBar(content: Text(Strings.hint_press_long_for_menu), duration: Duration(milliseconds: 250),));
@@ -107,13 +105,14 @@ class _ReadPageState extends State<ReadPage> {
 
   void delete(User user) {
     API.callDeleteUser(user.id,
-      onSuccess: (_) {
+      onSuccess: (res) {
         setState(() {
           data.removeWhere((it) => it.id == user.id);
         });
         Navigator.of(context).pop();
+        Scaffold.of(context).showSnackBar(SnackBar(content: Text(res)));
       },
-      onError: showError,
+      onError: (e) { Network.showError(context, e); },
     );
   }
 

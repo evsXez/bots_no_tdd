@@ -124,6 +124,14 @@ class Network {
   //   if (Consts.SHOW_NETWORK_TRAFFIC) print("COOKIE REPLACED(SET DEBUG): $_cookie");
   // }
 
+
+  static void showError(BuildContext context, NetworkRequestError error) {
+    Scaffold.of(context).showSnackBar(SnackBar(
+      backgroundColor: Colors.red,
+      content: Text(error.body, style: TextStyle(color: Colors.white)),
+    ));
+  }
+
 }
 
 

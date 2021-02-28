@@ -1,6 +1,5 @@
 # //TODO:
 
->- every page should have a different way of showing server information (snack bar, bottom sheet, etc.)
 - demonstrate state management
 - make graphs different (load, interaction)
 - at least 2 unit tests
@@ -16,6 +15,7 @@
 
 
 ## DONE:
+- <s>every page should have a different way of showing server information (snack bar, bottom sheet, etc.)</s>
 - <s>graphs: data from server on every page</s>
 - <s>demonstrate complex UI graph</s>
 - <s>demonstrate server-client communication</s>

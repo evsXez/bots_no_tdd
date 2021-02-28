@@ -1,5 +1,6 @@
 import 'package:bots_no_tdd/data/User.dart';
 import 'package:bots_no_tdd/network/API.dart';
+import 'package:bots_no_tdd/network/Network.dart';
 import 'package:bots_no_tdd/resources/Strings.dart';
 import 'package:bots_no_tdd/widgets/Space.dart';
 import 'package:flutter/material.dart';
@@ -59,16 +60,17 @@ class _UpdatePageState extends State<UpdatePage> {
   void updatePressed() {
     API.callUpdateUser(widget.user.id, nameController.text, commentController.text,
       onSuccess: showMessage,
-      onError: showError,
+      onError: (e) { Network.showError(context, e); },
     );
   }
 
   void showMessage(data) {
-    print("Message: $data");
+    showModalBottomSheet(context: context, builder: (ctx) => Container(
+      height: 120,
+      decoration: BoxDecoration(borderRadius: BorderRadius.all(Radius.circular(12))),
+      child: Center(child: Text(data)),
+    ));
     clearFields();
-  }
-  void showError(error) {
-    print("Error: $error");
   }
   void clearFields() {
     widget.updated();
