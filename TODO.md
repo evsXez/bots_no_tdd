@@ -1,11 +1,10 @@
 # //TODO:
 
->- implement POST
+>- implement GET
 - demonstrate server-client communication
 - demonstrate complex UI graph
 - demonstrate navigation flow
 - demonstrate state management
-- implement GET
 - implement PUT
 - implement DELETE
 - graphs: data from server on every page
@@ -24,8 +23,9 @@
 
 
 ## DONE:
-- <s>read document carefully</s>
-- <s>create simple server and simple database</s>
+- <s>implement POST</s>
 - <s>implement bottom navigation bar</s>
+- <s>create simple server and simple database</s>
+- <s>read document carefully</s>
 
 
