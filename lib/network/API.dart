@@ -17,8 +17,14 @@ class API {
   static Future<NetworkRequestResult> callUpdateUser<T>(String id, String name, String comment, {dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
     _call(_updateUser(id, name, comment), onSuccess: onSuccess, onError: onError, converter: converter);
 
+  static Future<NetworkRequestResult> callDeleteUser<T>(String id, {dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
+    _call(_deleteUser(id), onSuccess: onSuccess, onError: onError, converter: converter);
+
   static Future<NetworkRequestResult> callGetUsers<T>({dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
     _call(_getUsers(), onSuccess: onSuccess, onError: onError, converter: converter);
+
+  static Future<NetworkRequestResult> callHello<T>({dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) =>
+    _call(_hello(), onSuccess: onSuccess, onError: onError, converter: converter);
 
   static Future<NetworkRequestResult> _call<T>(Future<NetworkRequestResult> method, {dynamic Function(T data) onSuccess, Function(NetworkRequestError) onError, T Function(String) converter}) {
     assert(onSuccess != null);
@@ -51,10 +57,16 @@ class API {
     return await _network.post("highfive", {"name": name, "comment": comment});
   }
   static Future<NetworkRequestResult> _updateUser(String id, String name, String comment) async {
-    return await _network.put("highfive", {"id": id, "name": name, "comment": comment});
+    return await _network.put("highfive/$id", {"name": name, "comment": comment});
+  }
+  static Future<NetworkRequestResult> _deleteUser(String id) async {
+    return await _network.delete("highfive/$id");
   }
   static Future<NetworkRequestResult> _getUsers() async {
     return await _network.get("highfive");
+  }
+  static Future<NetworkRequestResult> _hello() async {
+    return await _network.get("hello");
   }
 
 

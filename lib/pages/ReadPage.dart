@@ -33,6 +33,7 @@ class _ReadPageState extends State<ReadPage> {
   @override
   Widget build(BuildContext context) {
     if (isLoading) return Center(child: CircularProgressIndicator());
+    if (data.length == 0) return Center(child: Text(Strings.hint_add_something));
     return ListView(
       children: data.map((it) => listItem(it)).toList(),
     );
@@ -42,6 +43,7 @@ class _ReadPageState extends State<ReadPage> {
     child: GestureDetector(
       onLongPressStart: (details) { showContextMenu(user, details); },
       child: ListTile(
+        leading: Image.asset("images/hf.png"),
         onTap: showHint,
         title: Text(user.name), 
         subtitle: Text(user.comment, style: TextStyle(color: Colors.grey), maxLines: 3,),
@@ -80,19 +82,39 @@ class _ReadPageState extends State<ReadPage> {
               items: items)
       .then((value) { 
         switch (value) {
-          case OPTION_UPDATE: { actionUpdate(user); break; }
-          case OPTION_DELETE: { actionDelete(user); break; }
+          case OPTION_UPDATE: { requestUpdate(user); break; }
+          case OPTION_DELETE: { requestDelete(user); break; }
         }
       });
 
   }
 
-  void actionUpdate(User user) {
+  void requestUpdate(User user) {
     widget.updateRequest(user);
   }
 
-  void actionDelete(User user) {
+  void requestDelete(User user) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Delete ${user.name}?"),
+        actions: [buttonCancel, buttonDelete(user),],
+      ),);
+  }
 
+  Widget buttonDelete(User user) => FlatButton(onPressed: () { delete(user); }, child: Text(Strings.label_delete),textColor: Colors.deepOrange,);
+  Widget get buttonCancel => FlatButton(onPressed: () { Navigator.of(context).pop(); }, child: Text(Strings.label_cancel),);
+
+  void delete(User user) {
+    API.callDeleteUser(user.id,
+      onSuccess: (_) {
+        setState(() {
+          data.removeWhere((it) => it.id == user.id);
+        });
+        Navigator.of(context).pop();
+      },
+      onError: showError,
+    );
   }
 
 

@@ -1,4 +1,5 @@
 import 'package:bots_no_tdd/network/API.dart';
+import 'package:bots_no_tdd/network/response/HelloResponse.dart';
 import 'package:bots_no_tdd/resources/Strings.dart';
 import 'package:bots_no_tdd/widgets/Space.dart';
 import 'package:flutter/material.dart';
@@ -13,12 +14,29 @@ class _CreatePageState extends State<CreatePage> {
   final nameController = TextEditingController();
   final commentController = TextEditingController();
 
+  String hello = "";
+
+  void initState() {
+    super.initState();
+    if (Strings.hello != null) {
+      hello = Strings.hello;
+    } else {
+      API.callHello(
+        onSuccess: (s) { setHello(s); },
+        onError: showError,
+        converter: HelloResponse.fromJson,
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(16),
       child: Column(
         children: [
+          greetingLabel,
+          spacev(8),
           nameField,
           spacev(16),
           commentField,
@@ -29,6 +47,7 @@ class _CreatePageState extends State<CreatePage> {
     );
   }
 
+  Widget get greetingLabel => Center(child: Text(hello, style: TextStyle(color: Colors.deepOrange, fontSize: 18)));
   Widget get nameField => TextField(controller: nameController, decoration: InputDecoration(hintText: Strings.hint_name),);
   Widget get commentField => TextField(controller: commentController, decoration: InputDecoration(hintText: Strings.hint_comment), maxLines: 3,);
   Widget get createButton => RaisedButton(onPressed: createPressed, child: Text(Strings.label_create), color: Colors.blue, textColor: Colors.white,);
@@ -56,5 +75,9 @@ class _CreatePageState extends State<CreatePage> {
     });
   }
 
+  void setHello(String s) {
+    Strings.hello = s;
+    setState(() { hello = s; });
+  }
 
 }

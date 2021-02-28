@@ -1,13 +1,8 @@
 # //TODO:
 
->- implement DELETE
-- demonstrate server-client communication
-- demonstrate complex UI graph
-- demonstrate navigation flow
+>- every page should have a different way of showing server information (snack bar, bottom sheet, etc.)
 - demonstrate state management
-- graphs: data from server on every page
 - make graphs different (load, interaction)
-- every page should have a different way of showing server information (snack bar, bottom sheet, etc.)
 - at least 2 unit tests
 - create simple document with screenshots or short video that demonstrates TDD approach
 
@@ -21,6 +16,11 @@
 
 
 ## DONE:
+- <s>graphs: data from server on every page</s>
+- <s>demonstrate complex UI graph</s>
+- <s>demonstrate server-client communication</s>
+- <s>demonstrate navigation flow</s>
+- <s>implement DELETE</s>
 - <s>implement PUT</s>
 - <s>implement GET</s>
 - <s>implement POST</s>

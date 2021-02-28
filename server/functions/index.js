@@ -12,18 +12,21 @@ admin.initializeApp();
 const express = require('express');
 // const cors = require('cors');
 
-const app = express();
 
 // Automatically allow cross-origin requests
 // app.use(cors({ origin: true }));
 
+const hf = express();
+hf.get('/', async (req, res) => await runRequest(res, () => getUsers()));
+hf.post('/', async (req, res) => await runRequest(res, () => createUser(req.body.name, req.body.comment)));
+hf.put('/:id', async (req, res) => await runRequest(res, () => updateUser(req.params.id, req.body.name, req.body.comment)));
+hf.delete('/:id', async (req, res) => await runRequest(res, () => deleteUser(req.params.id)));
+exports.highfive = functions.https.onRequest(hf);
 
-app.get('/', async (req, res) => await runRequest(res, () => getUsers()));
-app.post('/', async (req, res) => await runRequest(res, () => createUser(req.body.name, req.body.comment)));
-app.put('/', async (req, res) => await runRequest(res, () => updateUser(req.body.id, req.body.name, req.body.comment)));
-app.delete('/', async (req, res) => await runRequest(res, () => deleteUser(req.body.id)));
+const hello = express();
+hello.get('/', async (req, res) => await runRequest(res, () => new Response(200, JSON.stringify({"message":"High five them all!"}))));
+exports.hello = functions.https.onRequest(hello);
 
-exports.highfive = functions.https.onRequest(app);
 
 async function runRequest(res, fun) {
     const request = await fun();
