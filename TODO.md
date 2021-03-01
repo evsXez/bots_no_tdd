@@ -1,7 +1,6 @@
 # //TODO:
 
->- write 1 integration test
-- create simple document with screenshots or short video that demonstrates TDD approach
+>- create simple document with screenshots or short video that demonstrates TDD approach
 
 
 ## Bonus:
@@ -11,6 +10,7 @@
 
 
 ## DONE:
+- <s>write 1 integration test</s>
 - <s>at least 2 unit tests</s>
 - <s>create 1 graph that is built using a Stream</s>
 - <s>make graphs different (load, interaction)</s>
